@@ -21,6 +21,10 @@ Password by default is "example" specified in docker-compose.yml
 To destroy container instances run ```docker-compose down```
 To rebuild database with init script, you have to delete "data" directory before replay ``docker-compose up -d```
 
+Access to adminer : http://localhost:8080
+Access to postgrest : http://localhost:8080
+Access to swagger : http://localhost:4000 (permet de retrouver les routes api pour accéder au service postgrest)
+
 ## Maintain database structure up to date
 You can add or modify structure database in file init/init-db.sql
 You can create multiple init file (structures and content). The files are loading in alphabetic order.
