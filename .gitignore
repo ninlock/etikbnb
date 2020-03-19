@@ -2,3 +2,7 @@
 .settings
 .idea
 etikbnb-db/data
+/node_modules
+/dist
+/vendor
+/var

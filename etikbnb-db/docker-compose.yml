@@ -4,7 +4,6 @@ services:
 
   db:
     image: postgres
-    restart: always
     environment:
       POSTGRES_PASSWORD: example
     volumes:
@@ -16,3 +15,25 @@ services:
     restart: always
     ports:
       - 8080:8080
+    depends_on:
+      - db
+
+  dbrest:
+    image: postgrest/postgrest
+    ports:
+      - 4000:3000
+    environment:
+      PGRST_DB_URI: postgres://postgres:example@db:5432/etikbnb
+      PGRST_DB_SCHEMA: public
+      PGRST_DB_ANON_ROLE: postgres
+    depends_on:
+      - db
+
+  swagger:
+    image: swaggerapi/swagger-ui
+    ports:
+      - "8081:8080"
+    expose:
+      - "8080"
+    environment:
+      API_URL: http://localhost:4000/
