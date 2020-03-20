@@ -3,7 +3,9 @@ version: '3.1'
 services:
 
   api:
-    image:
+    image: openjdk:1.8-alpine
+    volumes:
+      -
     networks:
       - etikbnb-db_default
 
